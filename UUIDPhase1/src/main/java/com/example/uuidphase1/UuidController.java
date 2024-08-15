@@ -1,20 +1,23 @@
 package com.example.uuidphase1;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/UserEntity")
 public class UuidController {
+
+
+
     @Autowired
+    public UuidController(UserService userService) {
+        this.userService = userService;
+    }
     private UserService userService;
 
-    private  final UuidRepository uuidRepository;
-    public UuidController(UuidRepository uuidRepository) {this.uuidRepository = uuidRepository;}
+
 
 @GetMapping
     public List<UserEntity> getAllUsers() {
@@ -28,7 +31,7 @@ public class UuidController {
 
     @PostMapping
     public UserEntity createUser(@RequestBody UserEntity user) {
-        return (UserEntity) (UserEntity) userService.saveUser((User) user);
+        return (UserEntity) (UserEntity) userService.saveUser((UserEntity) user);
     }
 
     @DeleteMapping("/{id}")
