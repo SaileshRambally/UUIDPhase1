@@ -2,6 +2,7 @@ package com.example.uuidphase1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ public class UuidController {
     public UuidController(UserService userService) {
         this.userService = userService;
     }
-    private UserService userService;
+    private final UserService userService;
 
 
 
