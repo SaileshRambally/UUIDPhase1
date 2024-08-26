@@ -30,6 +30,7 @@ public class UserService {
     public UserEntity saveUser(UserEntity userEntity){
         userEntity.setId(UUID.randomUUID());
         return uuidRepository.save(userEntity);
+
     }
 
 
